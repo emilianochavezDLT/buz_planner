@@ -1,2 +1,5 @@
-## buz_planner
-This is the business planner app made to keep you on track. Productivity Tool
+## Buzz Planner
+This is the business planner app made to keep you on track. It is a productivity tool!
+
+
+
