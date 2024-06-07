@@ -2,6 +2,9 @@
 comands.md
 database_help.md
 
-#Ignore DB files
-db/
+#Ignore DB folders
+/db/
+/db/*
+
+
 
