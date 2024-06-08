@@ -5,5 +5,7 @@ database_help.md
 #Ignore DB folders
 db/*
 
+#Ignore the config
+config/*
 
 

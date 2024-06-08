@@ -1,6 +1,3 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../db');
-
 /**
  * 
  * The project will contain the following fields
@@ -13,31 +10,25 @@ const sequelize = require('../db');
  * 
  */
 
-
-const Project = sequelize.define('Project', {
-    // Model attributes are defined here
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-    },
-    projectName: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    createdAt: {
-        type: DataTypes.DATE,
-        defaultValue: Sequelize.NOW
-    },
-    createdBy: {
-        type: DataTypes.INTEGER,
-        refernces: {
-            model: 'User',
-            key: 'id'
+module.exports = (sequelize, DataTypes) => {
+    const Project = sequelize.define('Project', {
+        // Model attributes are defined here
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: Sequelize.NOW
         }
-    }
-}, {
-    // Other model options go here
-});
+    }, {
+        // Other model options go here
+    });
 
-module.exports = Project;
+    return Project;
+}
