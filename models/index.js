@@ -28,5 +28,4 @@ db.sequelize = sequelize;
 db.users = require('./user')(sequelize, Sequelize);
 db.projects = require('./project_model')(sequelize, Sequelize);
 
-
 module.exports = db;

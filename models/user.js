@@ -1,7 +1,4 @@
 //Model for the user
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../db');
-const { model } = require('../db/db');
 
 //The user will contain the following fields
 /**
