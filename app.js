@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = process.env.PORT || 3000;
-const { client, closeConnection } = require('./db');
+const sequelize = require('./db'); // Import Sequelize instance
 
 //middleware setup
 app.use(express.json()); // for parsing application/json
@@ -19,12 +19,14 @@ app.use('/', indexRoute);
 
 
 
-
-// Close the database connection when the server shuts down
-process.on('SIGINT', async () => {
-    console.log('Closing PostgreSQL connection...');
-    await closeConnection();
-    process.exit(0);
+// Sync models and start the server
+sequelize.sync({ force: true }).then(() => { //This creates the table if it doesn't exist (and does nothing if it already exists)
+    console.log('Database & tables created!');
+    
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
 });
 
 
