@@ -1,3 +1,4 @@
+const { Sequelize } = require('sequelize');
 /**
  * 
  * The project will contain the following fields

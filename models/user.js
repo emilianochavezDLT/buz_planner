@@ -1,5 +1,5 @@
 //Model for the user
-
+const { Sequelize } = require('sequelize');
 //The user will contain the following fields
 /**
  * ID
