@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false })); // for parsing application/x-w
 
 
 //static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 //Routes Setup
 const indexRoute = require('./urls/indexRoute');
