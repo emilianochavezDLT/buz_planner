@@ -1,6 +1,6 @@
-import React from 'react';
-
 const HomePage = () => {
+  console.log("Rendering HomePage Component"); // Debugging statement
+
   return (
     <div>
       <h2>Welcome to the Home Page</h2>

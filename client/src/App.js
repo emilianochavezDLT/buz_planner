@@ -1,13 +1,20 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import HomePage from './pages/HomePage';
 
 const App = () => {
+  console.log("Rendering App Component");
+
   return (
-    <div className="App">
-      <h1>My React App</h1>
-      <p>This is a simple test message.</p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
 export default App;
+
