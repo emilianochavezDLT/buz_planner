@@ -21,3 +21,9 @@ const getUserById = async (id) => {
         throw new Error(error, "Could not find user");
     }
 }
+
+const findUser = async (user) => {
+    
+    return User.find(user => user.email === user.email && user.password === user.password)
+    
+}

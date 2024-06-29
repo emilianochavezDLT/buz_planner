@@ -12,6 +12,23 @@ const createUser = async (req, res) => {
     }
 }
 
+const signIn = async (req, res) => {
+    try {
+        const user = req.body;
+        const userFound = await userService.findUser(user);
+        if (userFound) {
+            res.status(200).json(userFound);
+        } else {
+            res.status(400).json({ error: "User not found" });
+        }
+        
+    } catch (error) {
+        res
+            .status(400)
+            .json({ error: "Something went wrong with the SignIn :(" });
+    }
+}
+
 const getUserById = async (req, res) => {
     try {
         const id = req.params.id;
@@ -26,5 +43,6 @@ const getUserById = async (req, res) => {
 
 module.exports = {
     createUser,
-    getUserById
+    getUserById,
+    signIn
 }
