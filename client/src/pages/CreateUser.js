@@ -1,3 +1,6 @@
+const React = require('react'); // Import React
+const axios = require('axios'); // Import axios
+
 const CreateUser = () => {
 
     console.log("Rendering CreateUser Component"); // Debugging statement
