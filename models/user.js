@@ -1,5 +1,5 @@
 //Model for the user
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = 'sequelize';
 //The user will contain the following fields
 /**
  * ID
@@ -12,8 +12,9 @@ const { Sequelize } = require('sequelize');
  * 
  */
 
-module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define('User', {
+
+const User = (sequelize) => {
+    return sequelize.define('User', {
         // Model attributes are defined here
         id: {
             type: DataTypes.INTEGER,
@@ -38,15 +39,17 @@ module.exports = (sequelize, DataTypes) => {
         },
         createdAt: {
             type: DataTypes.DATE,
-            defaultValue: Sequelize.NOW
+            defaultValue: DataTypes.NOW
         },
         lastLogin: {
             type: DataTypes.DATE,
-            defaultValue: Sequelize.NOW
+            defaultValue: DataTypes.NOW
         }
     }, {
         // Other model options go here
     });
-
-    return User;
 }
+
+module.exports = User;
+
+

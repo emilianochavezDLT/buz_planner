@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 const HomePage = () => {
 
@@ -15,18 +16,22 @@ const HomePage = () => {
   };
 
   return (
-    <div className="container-fluid">
-      <h1>Home Page</h1>
+    <>
+      <NavBar />
+      <div className="container-fluid">
 
-      <p>Welcome to the Home Page</p>
+        <h1>Home Page</h1>
 
-      <p>Sign in or Create an Account</p>
-      <div className="d-grid gap-2 d-md-block">
-        <a className="btn btn-primary me-2" onClick={handleSignInClick}>Sign In</a>
-        <a className="btn btn-primary" onClick={handleCreateAccountClick}>Create Account</a>
+        <p>Welcome to the Home Page</p>
+
+        <p>Sign in or Create an Account</p>
+        <div className="d-grid gap-2 d-md-block">
+          <a className="btn btn-primary me-2" onClick={handleSignInClick}>Sign In</a>
+          <a className="btn btn-primary" onClick={handleCreateAccountClick}>Create Account</a>
+        </div>
+
       </div>
-
-    </div>
+    </>// This is a fragment, it's a way to group multiple children without adding extra nodes to the DOM
   );
 };
 
