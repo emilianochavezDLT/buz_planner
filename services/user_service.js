@@ -1,5 +1,5 @@
-const db = require('../models');
-const User = db.User;
+const { User } = require('../models');
+
 
 
 const createUser = async (user) => {

@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const sequelize = require('./models/index.js'); // Import Sequelize instance
-const config = require('./config/config');
+
+
 
 
 //middleware setup
@@ -28,8 +29,8 @@ sequelize.sync({ force: true }).then(() => { //This creates the table if it does
     console.log('Database & tables created!');
     
     //setting up the port
-    app.listen(config.port, () => {
-      console.log(`Server is running on http://localhost:${config.port}`);
+    app.listen(5001, () => {
+      console.log(`Server is running on http://localhost:5001`);
     });
 });
 
