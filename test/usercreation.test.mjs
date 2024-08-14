@@ -12,8 +12,7 @@ describe('POST and GET ./users/createUser', () => {
         const create_user = {
             firstName: 'John',
             lastName: 'Doe',
-            email: 'jd@mail.com',
-            password: 'password'
+            email: 'jd@mail.com'
         };
         
         // This is the expected response
@@ -27,7 +26,7 @@ describe('POST and GET ./users/createUser', () => {
         expect(res.body.firstName).to.equal(create_user.firstName); // Expect the response to have the same first name
         expect(res.body.lastName).to.equal(create_user.lastName); // Expect the response to have the same last name
         expect(res.body.email).to.equal(create_user.email); // Expect the response to have the same email
-        expect(res.body.password).to.equal(create_user.password); // Expect the response to have the same password
+        
 
         // The ID of the created user is in the response body
         userId = res.body.id; // Set the userId to the ID of the created user

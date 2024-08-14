@@ -1,7 +1,3 @@
-#Ignore the self-helps
-comands.md
-database_help.md
-
 #Ignore DB folders
 db/*
 
