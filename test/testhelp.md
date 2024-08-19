@@ -14,3 +14,12 @@
 ```bash
 npm install --save-dev mocha supertest chai
 ```
+
+Running Test
+```bash
+npm run test
+```
+or
+```bash
+npm test
+```

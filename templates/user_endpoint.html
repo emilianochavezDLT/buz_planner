@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+</head>
+<body>
+    <h1>User Management</h1>
+
+    <h2>Create User</h2>
+    <form id="createUserForm">
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+        
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <button type="submit">Create User</button>
+    </form>
+
+    <h2>Retrieve User</h2>
+    <form id="getUserForm">
+        <label for="userId">User ID:</label><br>
+        <input type="text" id="userId" name="userId" required><br><br>
+
+        <button type="submit">Get User</button>
+    </form>
+
+    <h2>Response</h2>
+    <pre id="response"></pre>
+
+    <script>
+        document.getElementById('createUserForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+
+            const response = await fetch('/users/createUser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ firstName, lastName, email }),
+            });
+
+            const data = await response.json();
+            document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+        });
+
+        document.getElementById('getUserForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const userId = document.getElementById('userId').value;
+
+            const response = await fetch(`/users/getUserById/${userId}`);
+            const data = await response.json();
+            document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+        });
+    </script>
+</body>
+</html>
