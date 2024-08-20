@@ -35,7 +35,40 @@ describe('POST ./users/createUser', () => {
 
         // The ID of the created user is in the response body
         userId = res.body.id; // Set the userId to the ID of the created user
-    });         
+    });        
+
+});
+
+describe('POST ./users/createUser', () => {
+
+    it('should return an error for missing user fields', async () => {
+        const create_user = {
+            firstName: 'John',
+            lastName: 'Doe'
+        };
+
+        const res = await request(app)
+            .post('/users/createUser')
+            .send(create_user)
+
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('Please provide all the required fields');
+    });
+
+    it('should return an error for an invalid email', async () => {
+        const create_user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'jdmail.com'
+        };
+
+        const res = await request(app)
+            .post('/users/createUser')
+            .send(create_user)
+
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('Please provide a valid email address');
+    })
 
 });
 
