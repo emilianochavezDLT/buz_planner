@@ -1,11 +1,11 @@
-const { User } = require('../models');
+const { User } = require('../models'); // Import the User model
 
 
-
-const createUser = async (user) => {
+//Create a new user
+const createUser = async (user) => { 
     try {
-        const newUser = await User.create(user);
-        return newUser;
+        const newUser = await User.create(user); // Create a new user
+        return newUser; // Return the new user
 
     } catch (error) {
         throw new Error(error, "Could not create user");
@@ -14,7 +14,7 @@ const createUser = async (user) => {
 
 const getUserById = async (id) => {
     try {
-        const user = await User.findByPk(id);
+        const user = await User.findByPk(id); //Find a user by ID
         return user;
 
     } catch (error) {
@@ -22,14 +22,9 @@ const getUserById = async (id) => {
     }
 }
 
-const findUser = async (user) => {
-    
-    return User.find(user => user.email === user.email && user.password === user.password)
-    
-}
+
 
 module.exports = {
     createUser,
     getUserById,
-    findUser
 }

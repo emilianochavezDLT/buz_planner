@@ -2,11 +2,16 @@ import request from 'supertest' // Import supertest for testing the API
 import app from '../app.js'// Import app for testing
 import { expect } from 'chai'; // Import chai for assertions
 
-describe('POST and GET ./users/createUser', () => {
+
+//Giving the userId a global scope
+let userId;
+
+// This is the test suite for the user creation
+describe('POST ./users/createUser', () => {
 
     //This is the Post request to create a user
     it('should create a new user', async () => {
-        let userId;
+        
 
         // Send a POST request to the app
         const create_user = {
@@ -30,19 +35,21 @@ describe('POST and GET ./users/createUser', () => {
 
         // The ID of the created user is in the response body
         userId = res.body.id; // Set the userId to the ID of the created user
-    });
+    });         
 
-    //This is the Get request to get a user by ID
+});
+
+
+//Testing the GET request to get a user by ID
+describe('GET ./users/getUserById/:id', () => {
     it('should get a user by ID', async () => {
-        const res = await request(app)
-            .get(`/users/getUserById/${userId}`)
-            .expect(200);
+        const res = await request(app) // Send a GET request to the app
+            .get(`/users/getUserById/${userId}`) // Get the user by ID
+            .expect(200); // Expect a 200 response
 
         expect(res.body).to.have.property('id', userId);
         expect(res.body.firstName).to.equal('John');
         expect(res.body.lastName).to.equal('Doe');
-        expect(res.body.email).to.equal('john.doe@example.com');
-    });
-                
-
+        expect(res.body.email).to.equal('jd@mail.com');
+    })
 });

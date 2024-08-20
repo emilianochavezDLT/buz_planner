@@ -59,7 +59,10 @@ psql dbname
             nameofdb=> \q
         ```
 
-### Connecting PostgreSQL with Node.JS
+---
+### This Part is no Longer Used Go Further Down
+ - [Click Here to Go to the Correct Section](#cli-sequalize)
+#### Connecting PostgreSQL with Node.JS
 Reference: 
 - [Tembo Article](https://tembo.io/docs/getting-started/postgres_guides/connecting-to-postgres-with-nodejs)
 
@@ -127,7 +130,6 @@ const closeConnection = () => {
 ```
 ---
 
-#### This Method is in the Project
 #### Check Further Down For CLI Use Because the CLI Creates All Of The Files and Folders That You Need
 
 OR do a config file in the /config folder with this information
@@ -180,9 +182,13 @@ db.sequelize = sequelize;
 **********************************
 
 ```
+--- 
 
 ## CLI Sequalize
-[Sequalize Migration CLI DOC](https://sequelize.org/docs/v6/other-topics/migrations/)
+- You made it if you clicked on the blue link from [here](#this-part-is-no-longer-used-go-further-down)
+ - [Sequalize Migration CLI DOC](https://sequelize.org/docs/v6/other-topics/migrations/)
+
+Installing the Sequelize Command Line Prompt
 ```bash
 npm install --save-dev sequelize-cli
 ```
@@ -191,7 +197,11 @@ Creating Those Folder and Files
 ```bash
 npx sequelize-cli init
 ```
-Creates
+Creates Files
+ - config  
+ - models 
+ - migrations
+ - seeders
 
 ```bash
  - ROOT
