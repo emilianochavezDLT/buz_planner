@@ -18,16 +18,16 @@ const HomePage = () => {
   return (
     <>
       <NavBar />
-      <div className="container-fluid">
+      <div class="container-fluid">
 
         <h1>Home Page</h1>
 
         <p>Welcome to the Home Page</p>
 
         <p>Sign in or Create an Account</p>
-        <div className="d-grid gap-2 d-md-block">
-          <a className="btn btn-primary me-2" onClick={handleSignInClick}>Sign In</a>
-          <a className="btn btn-primary" onClick={handleCreateAccountClick}>Create Account</a>
+        <div class="d-grid gap-2 d-md-block">
+          <a class="btn btn-primary me-2" onClick={handleSignInClick}>Sign In</a>
+          <a class="btn btn-primary" onClick={handleCreateAccountClick}>Create Account</a>
         </div>
 
       </div>
