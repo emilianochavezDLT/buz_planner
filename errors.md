@@ -34,3 +34,9 @@ rm -rf node_modules
 rm package-lock.json
 npm install
 ```
+
+Also check if you are up to date with React and React DOM
+```bash
+npm install react@latest react-dom@latest
+npm install react-router-dom@latest
+```

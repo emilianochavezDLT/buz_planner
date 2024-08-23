@@ -39,33 +39,14 @@ const CreateUser = () => {
     };
 
     return (
-        <div className="container-fluid d-flex">
-            <div className="row flex-nowrap w-100">
-                <div className="col d-flex flex-column justify-content-center align-items-start">
-                    <h1 class="mb-4">Create User</h1>
-                    <form id="createUserForm">
-                        <div className="mb-4">
-                            <label htmlFor="firstName" className="form-label">First Name</label>
-                            <input type="text" className="form-control" id="firstName" name="firstName" required />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="lastName" className="form-label">Last Name</label>
-                            <input type="text" className="form-control" id="lastName" name="lastName" required />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <input type="email" className="form-control" id="email" name="email" required />
-                        </div>
-                        <button className="btn btn-primary" onClick={handleGoBack}>Go Back</button>
-                        <button type="submit" className="btn btn-primary ms-2" onClick={handle_submit}>Create User</button>
-                    </form>
-                </div>
-            </div>
+       
+        <div>
+            <h1>Hello</h1>
         </div>
-        
+
     );
 
-}
+};
 
 
 
