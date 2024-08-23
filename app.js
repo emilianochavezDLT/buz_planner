@@ -1,13 +1,17 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const cors = require('cors');
 const { sequelize } = require('./models');
 
 
 //middleware setup
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded
-
+const corsOptions = {
+  origin: 'http://localhost:3000',
+}
+app.use(cors(corsOptions)); //Need to allow CORS for the frontend to access the backend
 
 //static files
 app.use(express.static(path.join(__dirname, 'client/build')));
