@@ -4,6 +4,8 @@ import NavBar from "../components/NavBar";
 import {Box, Container} from "@mui/material";
 
 
+
+
 const HomePage = () => {
 
   const navigate = useNavigate();
@@ -20,6 +22,9 @@ const HomePage = () => {
   return (
     <Box>
       <NavBar />
+      <Container >
+        
+      </Container>
     </Box>
 
   );
