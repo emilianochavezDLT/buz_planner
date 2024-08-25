@@ -22,9 +22,27 @@ const getUserById = async (id) => {
     }
 }
 
+const findUser = async (user) => {
+    try{
+        
+        const userFound = await User.findOne({
+            where:{
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email
+            }
+        });
+        return userFound;
+
+    }
+    catch(error){
+        throw new Error(error, "Could not find user");
+    }
+}
 
 
 module.exports = {
     createUser,
     getUserById,
+    findUser
 }

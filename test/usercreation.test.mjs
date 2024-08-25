@@ -1,6 +1,7 @@
 import request from 'supertest' // Import supertest for testing the API
 import app from '../app.js'// Import app for testing
 import { expect } from 'chai'; // Import chai for assertions
+import e from 'express';
 
 
 //Giving the userId a global scope
@@ -85,4 +86,72 @@ describe('GET ./users/getUserById/:id', () => {
         expect(res.body.lastName).to.equal('Doe');
         expect(res.body.email).to.equal('jd@mail.com');
     })
+});
+
+describe('POST ./users/signIn', () => {
+
+    it('should sign in a user', async () => {
+        const user = {
+            firstName: 'Jane',
+            lastName: 'Foster',
+            email: 'jf@mail.com'
+        };
+
+        const res = await request(app)
+            .post('/users/signIn')
+            .send(user)
+            .expect(200);
+
+        expect(res.body).to.have.property('id');
+        expect(res.body.firstName).to.equal(user.firstName);
+        expect(res.body.lastName).to.equal(user.lastName);
+        expect(res.body.email).to.equal(user.email);
+        expect(res.body).to.have.property('createdAt');
+        expect(res.body).to.have.property('updatedAt');
+    });
+
+    it('should return an error for missing user fields', async () => {
+        const user = {
+            firstName: 'Jane',
+            lastName: 'Foster'
+        };
+
+        const res = await request(app)
+            .post('/users/signIn')
+            .send(user);
+
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('Please provide all the required fields');
+    });
+
+    it('should return an error for an invalid email', async () => {
+        const user = {
+            firstName: 'Jane',
+            lastName: 'Foster',
+            email: 'jfmail.com'
+        };
+
+        const res = await request(app)
+            .post('/users/signIn')
+            .send(user);
+
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('Please provide a valid email address');
+    });
+
+    it('should return an error for a user not found', async () => {
+        const user = {
+            firstName: 'Jane',
+            lastName: 'Foster',
+            email: 'janefoster@mail.com'
+        };
+
+        const res = await request(app)
+            .post('/users/signIn')
+            .send(user);
+
+        expect(res.body).to.have.property('error');
+        expect(res.body.error).to.equal('Try Again');
+    });
+
 });
