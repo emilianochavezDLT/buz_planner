@@ -1,4 +1,6 @@
 const userService = require('../services/user_service');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 
 //Helper functions for the user controller
@@ -45,8 +47,25 @@ const signIn = async (req, res) => {
         user_fields_validation(user); // Validate the user fields
 
         const userFound = await userService.findUser(user); // Find the user from the imported service function
+        
         if (userFound) {
-            res.status(200).json(userFound); // Return the user
+            //If the user is found then create a token
+            
+            const accessToken = jwt.sign(
+                { email: userFound.email },
+                process.env.ACCESS_TOKEN_SECRET,
+                { expiresIn: '1m' }
+            );
+            
+            //This will let the user stay logged in for 1 day
+            const refreshToken = jwt.sign(
+                { email: userFound.email },
+                process.env.REFRESH_TOKEN_SECRET,
+                { expiresIn: '1d' }
+            );
+            
+            res.cookie('refreshToken', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // Set the refresh token in a cookie
+            res.status(200).json({ accessToken }); // Return the access token
         } else {
             res.status(400).json({ error: "Try Again" }); // Return an error if the user is not found
         }

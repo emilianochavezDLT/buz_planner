@@ -2,6 +2,35 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 userController = require('../controllers/user_controller');
+const verifyJWT = require('../services/verifyJWT');
+
+//To protect the user routes
+//This will check if the user is authorized to access the routes
+/**
+ * router.post('/api/protected', verifyJWT, someController.someFunction);
+ * 
+ * or
+ * 
+ * go to app.js and add the following lines of code
+ * 
+ * const verifyJWT = require('../services/verifyJWT');
+ * 
+ * //Routes Setup
+ * const indexRoute = require('./urls/indexRoute');
+ * app.use('/', indexRoute);
+ * 
+ * const userRoute = require('./urls/userRoutes');
+ * app.use('/users', userRoute);
+ * 
+ * app.use(verifyJWT);
+ * //Any routes after this line will be protected
+ * const someRoute = require('./urls/someRoute');
+ * app.use('/api', someRoute);
+ * 
+ * 
+ * 
+ */
+
 
 // Define a route for the root URL
 router.get('/createUser', (req, res) => {
@@ -15,5 +44,6 @@ router.get('/getUserById/:id', userController.getUserById);
 
 //To sign in use /users/signIn
 router.post('/signIn', userController.signIn);
+
 
 module.exports = router;

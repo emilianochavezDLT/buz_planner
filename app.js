@@ -3,13 +3,22 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 const { sequelize } = require('./models');
+const cookieParser = require('cookie-parser');
 
 
 //middleware setup
-app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded
+
+// for parsing application/json
+app.use(express.json()); 
+
+// for form data
+app.use(express.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded 
+
+// for parsing cookies
+app.use(cookieParser()); 
+
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:3000', //Only allow requests from the frontend
 }
 app.use(cors(corsOptions)); //Need to allow CORS for the frontend to access the backend
 
