@@ -27,8 +27,8 @@ const NavBar = () => {
   const handleCreateAccountClick = () => {
     navigate("/createUser");
   };
-  const handleSignInClick = () => {
-    navigate("/signIn");
+  const handleLogInClick = () => {
+    navigate("/logIn");
   };
   const handleHomeClick = () => {
     navigate("/");
@@ -46,7 +46,7 @@ const NavBar = () => {
 
           <StyledButton>
             <Button color="inherit" onClick={handleCreateAccountClick}>Sign Up</Button>
-            <Button color="inherit" onClick={handleSignInClick} sx={{
+            <Button color="inherit" onClick={handleLogInClick} sx={{
               pr: "10px"
             }}>Login</Button>
           </StyledButton>

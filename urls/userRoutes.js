@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 userController = require('../controllers/user_controller');
-const verifyJWT = require('../services/verifyJWT');
+
 
 //To protect the user routes
 //This will check if the user is authorized to access the routes
@@ -41,9 +41,6 @@ router.post('/createUser', userController.createUser);
 
 //To get the user by id user /users/getUserByID/<id>
 router.get('/getUserById/:id', userController.getUserById);
-
-//To sign in use /users/signIn
-router.post('/signIn', userController.signIn);
 
 
 module.exports = router;

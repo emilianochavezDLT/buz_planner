@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 const { sequelize } = require('./models');
+const verifyJWT = require('./services/verifyJWT');
 const cookieParser = require('cookie-parser');
 
 
@@ -15,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // for parsing application/x-www-form-urlencoded 
 
 // for parsing cookies
-app.use(cookieParser()); 
+app.use(cookieParser());
 
 const corsOptions = {
   origin: 'http://localhost:3000', //Only allow requests from the frontend
@@ -33,6 +34,18 @@ app.use('/', indexRoute);
 
 const userRoute = require('./urls/userRoutes');
 app.use('/users', userRoute);
+
+const authRoute = require('./urls/auth');
+app.use('/auth', authRoute);
+
+const refreshRoute = require('./urls/refresh');
+app.use('/auth', refreshRoute);
+
+
+//Any routes after this line will be protected
+app.use(verifyJWT);  //This will check if the user is authorized to access the routes
+
+
 
 
 //database connection

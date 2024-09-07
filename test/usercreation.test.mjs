@@ -88,7 +88,7 @@ describe('GET ./users/getUserById/:id', () => {
     })
 });
 
-describe('POST ./users/signIn', () => {
+describe('POST ./auth/logIn', () => {
 
     it('should sign in a user', async () => {
         const user = {
@@ -98,16 +98,11 @@ describe('POST ./users/signIn', () => {
         };
 
         const res = await request(app)
-            .post('/users/signIn')
+            .post('/auth/logIn')
             .send(user)
             .expect(200);
 
-        expect(res.body).to.have.property('id');
-        expect(res.body.firstName).to.equal(user.firstName);
-        expect(res.body.lastName).to.equal(user.lastName);
-        expect(res.body.email).to.equal(user.email);
-        expect(res.body).to.have.property('createdAt');
-        expect(res.body).to.have.property('updatedAt');
+        expect(res.body).to.have.property('accessToken');
     });
 
     it('should return an error for missing user fields', async () => {
@@ -117,7 +112,7 @@ describe('POST ./users/signIn', () => {
         };
 
         const res = await request(app)
-            .post('/users/signIn')
+            .post('/auth/logIn')
             .send(user);
 
         expect(res.body).to.have.property('error');
@@ -132,7 +127,7 @@ describe('POST ./users/signIn', () => {
         };
 
         const res = await request(app)
-            .post('/users/signIn')
+            .post('/auth/logIn')
             .send(user);
 
         expect(res.body).to.have.property('error');
@@ -147,7 +142,7 @@ describe('POST ./users/signIn', () => {
         };
 
         const res = await request(app)
-            .post('/users/signIn')
+            .post('/auth/logIn')
             .send(user);
 
         expect(res.body).to.have.property('error');

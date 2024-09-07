@@ -25,8 +25,8 @@ const HomePage = () => {
     navigate("/createUser");
   };
 
-  const handleSignInClick = () => {
-    navigate("/signIn");
+  const handleLogInClick = () => {
+    navigate("/logIn");
   };
 
   return (
@@ -40,7 +40,7 @@ const HomePage = () => {
         <Button variant="contained" onClick={handleCreateAccountClick}>Sign Up</Button>
         <Button sx={{
           ml: "10px"
-        }} variant="contained" onClick={handleSignInClick}>Login</Button>        
+        }} variant="contained" onClick={handleLogInClick}>Login</Button>        
         </Box>
       </CenteredContainer>
     </Box>
