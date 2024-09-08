@@ -24,8 +24,9 @@ verifyJWT = (req, res, next) => {
         if (err) {
             return res.status(403).json({ error: 'Invalid Token' }); // Return an error if the token is invalid
         }
-        console.log(decoded);
-        req.user = decoded.email // Using the decoded email to get the user
+        //console.log("Decoded:", decoded);
+        //Decoded should contain the user information we set in the payload like email, id, etc
+        req.user = decoded; // Set the user in the request object
         next(); // Call the next middleware
     });
 

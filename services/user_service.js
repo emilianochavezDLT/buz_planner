@@ -32,6 +32,12 @@ const findUser = async (user) => {
                 email: user.email
             }
         });
+
+        
+        if (!userFound){
+            throw new Error("User not found");
+        }
+
         return userFound;
 
     }

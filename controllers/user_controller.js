@@ -44,6 +44,7 @@ const createUser = async (req, res) => {
 const logIn = async (req, res) => {
 
     const user = req.body; // Get the user object from the request body
+    console.log("User in login:",user);
     
     try {
         
@@ -51,10 +52,24 @@ const logIn = async (req, res) => {
         
 
         const userFound = await userService.findUser(user); // Find the user from the imported service function
-        
+        //User found returns the whole user object
+        /**
+         * This inlude the user object that was found in the database
+         * Example:
+         * id: 1,
+         * firstName: 'John',
+         * lastName: 'Doe',
+         * email: 'jd@mail.com',
+         * createdAt: 2021-08-30T20:15:07.000Z,
+         * updatedAt: 2021-08-30T20:15:07.000Z
+         * 
+         * access each field by userFound.fieldName
+         * 
+         */
+
         if (userFound) {
             
-            infoToSendInToken = { email: user.email }; // Information to send in the token
+            infoToSendInToken = { email: userFound.email, id:userFound.id, firstName:userFound.firstName }; // Information to send in the token
             
             
             // Generate an access token

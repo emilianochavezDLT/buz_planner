@@ -92,6 +92,10 @@ These are useful columns to have!
 [Implementation of the Using Models](https://www.youtube.com/watch?v=NXeDkp9BZAY&t=642s)
 
 --- 
+## Relationships
+
+- Userful Article on Relationships: [Relationship Guide](https://medium.com/@eth3rnit3/sequelize-relationships-ultimate-guide-f26801a75554)
+---
 
 ## Migrating Commands 
 
@@ -105,6 +109,11 @@ Undoing Migrations
 - Undoing a Recent Migration: this command will revert the most recent migration.
 ```bash
 npx sequelize-cli db:migrate:undo
+```
+Undoing a Specific Migration
+- This command will revert a specific file migration.
+```bash
+npx sequelize db:migrate:undo --name <xxxxxxxx-migration-file-name>
 ```
 
 - Undoing ALL Migration

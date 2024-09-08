@@ -44,6 +44,8 @@ app.use('/auth', refreshRoute);
 
 //Any routes after this line will be protected
 app.use(verifyJWT);  //This will check if the user is authorized to access the routes
+const projectRoute = require('./urls/project');
+app.use('/projects', projectRoute);
 
 
 
